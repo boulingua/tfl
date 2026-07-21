@@ -45,7 +45,7 @@ S. Le Boulanger — <https://github.com/boulingua>
 
 ## Signature colour & icon
 
-This project's signature accent is **`#C7236A`** (light theme) / **`#E77EAC`** (dark theme), paired with the **arch** mark (`brand/icon.svg`). The accent is *flag-safe* — the hue does not appear in the Turkish flag — is distinct from every other boulingua language, and is kept clear of the boulingua hub blue. The whole colour system lives in the [boulingua hub](https://github.com/boulingua/website#per-language-accent-colours).
+This project's signature accent is **`#C7236A`** (light theme) / **`#E77EAC`** (dark theme), paired with the **pentagon** mark (`brand/icon.svg`). The accent is *flag-safe* — the hue does not appear in the Turkish flag — is distinct from every other boulingua language, and is kept clear of the boulingua hub blue. The whole colour system lives in the [boulingua hub](https://github.com/boulingua/website#per-language-accent-colours).
 
 ## Use of LLM tools
 
