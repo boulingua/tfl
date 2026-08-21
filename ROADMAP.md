@@ -4,7 +4,7 @@ Build plan for the boulingua **Turkish as a Foreign Language** course (`tfl`,
 accent `#C7236A` / dark `#E77EAC`, pentagon mark). This repository is an empty
 scaffold (LICENSE, README, brand icons) marked "coming soon". This document is
 the actionable plan to take it from scaffold to a live, curriculum-conformant
-course — content **and** website — built on the `pagegen` template and the
+course — content **and** website — built on the `kit` platform and the
 `curriculum` framework.
 
 ---
@@ -92,8 +92,8 @@ Each item states a concrete recommendation.
   instead, and the phonetic transparency of the orthography is cashed in as
   IPA-annotated read-aloud guidance in the worksheets. This is a first-class
   state, not a failure. Re-open it only when an openly-licensed `tr_TR` voice
-  appears: voice IDs and their licences are read from `audiogen/voices.yml`
-  (relocating to `kit/audio/voices.yml` at F1) and are never hand-typed, so
+  appears: voice IDs and their licences are read from `kit/audio/voices.yml` — the
+  single source of truth, never hand-copied into prose — so
   re-opening is one row in that file, not a search.
 - **Level 0 script/sound onboarding.** **Decision: yes, include it.** A short
   pre-A1 "Alfabe ve Sesler" stage: the 29 letters, the `ı/İ` distinction, vowel
@@ -103,41 +103,69 @@ Each item states a concrete recommendation.
 
 ---
 
-## 3. Instantiation from pagegen
+## 3. Instantiation from the kit
 
-Stand up the buildable site first; author content second.
+Stand up the buildable site first; author content second. Nothing shared is
+copied — `tfl` is built *around* the kit.
 
-1. **Copy the template.** Copy `pagegen/` into `tfl/` (preserve existing
-   `LICENSE`, `README.md`, `brand/`). Bring over `hugo.toml`, `go.mod`/`go.sum`,
-   `archetypes/`, `layouts/`, `assets/`, `i18n/`, `data/`, `scripts/`,
-   `content/` skeleton, `.github/workflows/build-deploy.yml`, `lychee.toml`,
-   `.gitignore`, `.nojekyll`.
-2. **Edit `hugo.toml` marked values only:**
+1. **Create the repo around the kit.** `tfl/` holds a short `hugo.toml`
+   (baseURL, title, languageCode, `[params]`, menus) whose `[module]` block
+   carries
+
+   ```toml
+   [module]
+     [[module.imports]]
+       path = "github.com/boulingua/kit"
+   ```
+
+   plus a `go.mod`/`go.sum` requiring `github.com/boulingua/kit` at the pinned
+   tag (`v1.0.0`), `boulingua.yml` (the per-course config the gate battery
+   reads), the twelve-line `.github/workflows/deploy.yml` calling the org's
+   reusable workflow, an empty `content/` skeleton with an empty
+   `data/vgwort.yaml`, the legal pages, `.gitignore` and `.nojekyll` — preserving
+   the existing `LICENSE`, `README.md` and `brand/`. `layouts/`, `assets/`,
+   `i18n/`, `archetypes/` and `scripts/` are **not** copied and must never
+   appear in this repo, and neither does the kit's `data/` — this repo keeps only
+   its own `vgwort.yaml` there. They are the drift surface, and a file that is
+   not here cannot fork. Hugo resolves them from the module; CI checks the kit out
+   at the pinned tag so `scripts/` and the gate battery sit on disk before Hugo
+   runs.
+2. **Vendor `_materials/`.** Run `kit materials sync` — it assembles the kit's
+   `latex/`, `fonts/` and `brand/icons/` into the flat tree the LaTeX build
+   expects — and commit the result. This is the only vendored surface, because
+   XeLaTeX cannot read a Hugo module; it is hash-gated against `kit.lock`, so an
+   edited file fails the build instead of forking quietly. (Earlier drafts told
+   you to copy `_materials/` from the template; `pagegen` never had one.)
+3. **Edit `hugo.toml` marked values only:**
    - `baseURL = "https://boulingua.github.io/tfl/"`
    - `title = "Türkçe — S. Le Boulanger"`
    - `languageCode = "tr"`, `defaultContentLanguage = "de"` (metalanguage is
      German; content language tags on items are Turkish)
    - `[params].navTitle = "Türkçe"`, `description`, `keywords`
      (`turkish,türkçe,CEFR,curriculum,OER,vowel-harmony`)
-   - `params.code = "tfl"` (selects the `#C7236A` accent — do **not** edit CSS)
+   - `params.code = "tfl"` (selects the `#C7236A` accent from the kit's
+     `data/accents.yaml` — do **not** edit CSS). Setting it is not optional: the
+     kit ships the neutral graphite `template` accent, so a course that forgets
+     looks obviously unconfigured rather than looking like DaF.
    - `[params.plausible].domain = "boulingua.github.io/tfl"`
    - `[[params.social]].url = "https://github.com/boulingua/tfl"`
    - `[[menu.main]]` — mirror the Turkish sections (Level 0, A1, A2, B1,
      Materials, About, Legal). Keep the `[params.plausible]` sub-table **last**
-     (the TOML sub-table trap noted in the template).
-3. **Regenerate the pentagon.** Run `python brand/make_icon.py` so
-   `brand/icon.svg`/`icon.png` + favicons derive from the `tfl` accent. Confirm
-   the pink pentagon renders in the navbar and as favicon.
-4. **Confirm accent data.** `data/accents.yaml` already carries
-   `code: tfl → accent "#C7236A", hover "#A01C56"`. No edit needed; verify the
-   dark-theme value `#E77EAC` is applied by `custom.css`.
-5. **Fill legal placeholders.** Replace `⟨…⟩` in `impressum.md`,
+     (the TOML sub-table trap noted in `hugo.defaults.toml`).
+4. **Regenerate the pentagon.** Run the kit's `brand/make_icon.py` so this
+   repo's `brand/icon.svg`/`icon.png` + favicons derive from the `tfl` accent.
+   Confirm the pink pentagon renders in the navbar and as favicon.
+5. **Confirm accent data.** The kit's `data/accents.yaml` already carries
+   `code: tfl → accent "#C7236A", hover "#A01C56"`. It arrives with the module;
+   no edit, and no `data/accents.yaml` in this repo. Verify the dark-theme value
+   `#E77EAC` is applied by the kit's `custom.css`.
+6. **Fill legal placeholders.** Replace `⟨…⟩` in `impressum.md`,
    `datenschutz.md`, `haftungsausschluss.md`; keep the VG Wort METIS disclosure
    in Datenschutz.
-6. **First green build.** `hugo --minify --gc` locally; then push to `main` and
-   confirm `build-deploy.yml` runs the gate battery and deploys to GitHub Pages
-   at the `tfl` path. Definition of "site stood up": green Actions run + live
-   pentagon home page.
+7. **First green build.** `hugo --minify --gc` locally; then push to `main` and
+   confirm `deploy.yml` builds with `--panicOnWarning`, runs the gate battery and
+   deploys to GitHub Pages at the `tfl` path. Definition of "site stood up":
+   green Actions run + live pentagon home page.
 
 ---
 
@@ -236,20 +264,20 @@ about/overview** ≈ **55–62 editorial pages** at full `core` release.
 ## 6. Website & materials
 
 - **Section landings via shortcodes.** Each `content/<level>/_index.md`
-  (`page_type: section`) uses the template's landing shortcodes — never raw
+  (`page_type: section`) uses the kit's landing shortcodes — never raw
   HTML — to list its units/exam and show the accent-tinted level card.
 - **Materials pipeline (committed).** Generate decks and worksheets locally from
-  the branded **slidegen**/**sheetgen** LaTeX templates via
-  `scripts/build_materials_latex.py`; commit outputs under
+  the kit's branded LaTeX templates (`kit/latex/`, vendored into `_materials/`)
+  via `scripts/build_materials_latex.py`; commit outputs under
   `static/materials/…` and downloadable PDFs under `static/downloads/<level>/`.
   CI **verifies only** (`verify_downloads.py`) — no TeX Live in the deploy path.
   Every deck/worksheet must render `ç ğ ı İ ö ş ü` — use a LaTeX engine/font with
   full Latin-Extended (XeLaTeX/LuaLaTeX + a Unicode font); add a build check.
 - **Native-voice audio — none, per §2.** The single `tr_TR` Piper voice is
-  NonCommercial-licensed, so `scripts/build_audio.py` is not wired for this
+  NonCommercial-licensed, so the kit's `audio/build_audio.py` is not wired for this
   course. Units render their `<details>` transcript with no player, and the
   read-aloud track lives in the worksheets as IPA annotation. Revisit when
-  `audiogen/voices.yml` carries a licence-clear Turkish row.
+  `kit/audio/voices.yml` carries a licence-clear Turkish row.
 - **Thumbnails.** `scripts/render_thumbs.py` produces deck/worksheet thumbnails
   referenced by `presentation.thumbnail` / `worksheet.thumbnail`.
 - **Downloads & attribution.** `pdf_attribution.py` stamps CC BY-SA 4.0 +
@@ -260,7 +288,7 @@ about/overview** ≈ **55–62 editorial pages** at full `core` release.
 ## 7. VG Wort — pixel assignment for ALL content pages (required)
 
 Non-skippable. Every editorial page ≥1800 rendered characters gets exactly one
-VG Wort Zählmarke, per `pagegen/docs/vgwort-standard.md`.
+VG Wort Zählmarke, per `kit/docs/vgwort-standard.md`.
 
 - **Which pages get a mark:** every **unit**, every **exam**, every **appendix**
   ≥1800 chars, and the **about/course-overview** prose. **Never** on the home
@@ -296,8 +324,9 @@ VG Wort Zählmarke, per `pagegen/docs/vgwort-standard.md`.
 
 ## 8. Milestones & sequencing
 
-- **M0 — Site stood up (Phase 3 above).** `S–M` — template instantiated, accent
-  + pentagon live, legal filled, first green build on Pages. *Dep: none.*
+- **M0 — Site stood up (Phase 3 above).** `S–M` — repo standing on the kit
+  module with `_materials/` vendored, accent + pentagon live, legal filled,
+  first green build on Pages. *Dep: none.*
 - **M1 — Level 0 live.** `M` — script/sound onboarding units, with IPA
   read-aloud annotation standing in for audio (§2). *Dep: M0.*
 - **M2 — A1 MVP live (flip candidate).** `L` — all A1 units + exam + core
