@@ -1,0 +1,199 @@
+# ─────────────────────────────────────────────────────────────────────────
+# tfl — Türkisch als Fremdsprache. Instantiated from the canonical boulingua
+# template `pagegen` (Hugo + hugo-coder).
+#
+# Course-local values below: baseURL, title, languageCode,
+# defaultContentLanguage, [params].navTitle/description/keywords/code, the
+# [[params.social]] repo URL, [params.plausible].domain and the [[menu.main]]
+# entries. Everything else is the shared standard and is kept byte-identical
+# to pagegen so the course can be re-aligned when the template moves.
+#
+# Metalanguage is German (ROADMAP §1): explanations, navigation and legal
+# pages are German; the language being taught — and every item tagged in the
+# curriculum block — is Turkish.
+# ─────────────────────────────────────────────────────────────────────────
+
+baseURL = "https://boulingua.github.io/tfl/"
+title = "Türkçe — S. Le Boulanger"
+languageCode = "tr"
+defaultContentLanguage = "de"
+enableEmoji = false
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 20
+
+[markup.highlight]
+  noClasses = false
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 3
+  ordered = false
+
+# Tags are DECLARED, not implicit — derive them from structured fields.
+[taxonomies]
+  tag = "tags"
+  skill = "skills"
+  level = "levels"
+  topic = "topics"
+
+[params]
+  navTitle = "Türkçe"
+  author = "S. Le Boulanger"
+  description = "Türkisch als Fremdsprache, Stufe 0 bis B1: Alphabet und Vokalharmonie, curriculumsgebundene Einheiten, Modellprüfungen, Materialien und Audio."
+  keywords = "turkish,türkçe,CEFR,curriculum,OER,vowel-harmony"
+  dateFormat = "2006-01-02"
+  since = 2025
+  colorScheme = "auto"
+  hideCredits = true
+  # The colour-scheme toggle is a labelled control in the navbar
+  # (layouts/_partials/header.html); disable the theme's floating duplicate
+  # so there is exactly one toggle on the page.
+  hideColorSchemeToggle = true
+  customCSS = ["css/custom.css"]
+  # Site code — selects this course's accent from data/accents.yaml
+  # (tfl → #C7236A light / #E77EAC dark). Never edit the CSS to change it.
+  code = "tfl"
+  # Content licence, surfaced by pdf attribution + legal pages.
+  license = "CC BY-SA 4.0"
+
+  # IMPORTANT — every sub-table under [params] MUST come AFTER all bare
+  # [params] keys. TOML scopes everything after a header to that header, so
+  # opening [params.plausible] before the keys above would silently move them
+  # under params.plausible and leave the site unstyled. Keep this block LAST.
+  [params.plausible]
+    # Privacy-friendly, cookieless analytics. Set domain to enable; leave
+    # empty to disable (the head partial is guarded on domain).
+    domain = "boulingua.github.io/tfl"
+    src = "https://plausible.io/js/script.js"
+
+[[params.social]]
+  name = "GitHub"
+  icon = "fa-brands fa-github fa-2x"
+  weight = 1
+  url = "https://github.com/boulingua/tfl"
+
+# ── Navigation — mirrors content/. Start lives behind the navbar brand. ────
+# Groups carry an identifier; children set `parent`.
+
+# ── Stufen ────────────────────────────────────────────────────────────────
+[[menu.main]]
+  name = "Stufen"
+  weight = 2
+  identifier = "stufen"
+
+[[menu.main]]
+  parent = "stufen"
+  weight = 21
+  name = "Stufe 0 — Alfabe ve Sesler"
+  url = "/level-0/"
+
+[[menu.main]]
+  parent = "stufen"
+  weight = 22
+  name = "A1 — Temel"
+  url = "/level-a1/"
+
+[[menu.main]]
+  parent = "stufen"
+  weight = 23
+  name = "A2 — Ön-orta"
+  url = "/level-a2/"
+
+[[menu.main]]
+  parent = "stufen"
+  weight = 24
+  name = "B1 — Orta"
+  url = "/level-b1/"
+
+# ── Anhänge (stufenübergreifend) ──────────────────────────────────────────
+[[menu.main]]
+  name = "Anhänge"
+  weight = 3
+  identifier = "anhaenge"
+
+[[menu.main]]
+  parent = "anhaenge"
+  weight = 31
+  name = "Übersicht"
+  url = "/appendices/"
+
+[[menu.main]]
+  parent = "anhaenge"
+  weight = 32
+  name = "Alphabet und Aussprache"
+  url = "/appendices/alphabet-aussprache/"
+
+[[menu.main]]
+  parent = "anhaenge"
+  weight = 33
+  name = "Vokalharmonie"
+  url = "/appendices/vokalharmonie/"
+
+[[menu.main]]
+  parent = "anhaenge"
+  weight = 34
+  name = "Glossar"
+  url = "/appendices/glossar/"
+
+# ── Materialien ───────────────────────────────────────────────────────────
+[[menu.main]]
+  name = "Materialien"
+  weight = 4
+  identifier = "materialien"
+
+[[menu.main]]
+  parent = "materialien"
+  weight = 41
+  name = "Foliensätze"
+  url = "/materials/presentations/"
+
+[[menu.main]]
+  parent = "materialien"
+  weight = 42
+  name = "Arbeitsblätter"
+  url = "/materials/worksheets/"
+
+# ── About ─────────────────────────────────────────────────────────────────
+[[menu.main]]
+  name = "About"
+  weight = 5
+  identifier = "about"
+
+[[menu.main]]
+  parent = "about"
+  weight = 51
+  name = "Über den Kurs"
+  url = "/about/"
+
+# ── Rechtliches ───────────────────────────────────────────────────────────
+[[menu.main]]
+  name = "Rechtliches"
+  weight = 9
+  identifier = "rechtliches"
+
+[[menu.main]]
+  parent = "rechtliches"
+  weight = 91
+  name = "Impressum"
+  url = "/impressum/"
+
+[[menu.main]]
+  parent = "rechtliches"
+  weight = 92
+  name = "Datenschutzerklärung"
+  url = "/datenschutz/"
+
+[[menu.main]]
+  parent = "rechtliches"
+  weight = 93
+  name = "Haftungsausschluss"
+  url = "/haftungsausschluss/"
+
+[module]
+  [[module.imports]]
+    path = "github.com/luizdepra/hugo-coder"

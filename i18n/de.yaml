@@ -1,0 +1,11 @@
+# German UI strings. The site's metalanguage is German
+# (defaultContentLanguage = "de"), so Hugo resolves i18n lookups here;
+# i18n/en.yaml is kept as the template's fallback.
+presentations: { other: "Foliensätze" }
+worksheets: { other: "Arbeitsblätter" }
+presentation: { other: "Foliensatz" }
+worksheet: { other: "Arbeitsblatt" }
+download: { other: "Herunterladen" }
+listen: { other: "Hören" }
+audio_intro: { other: "Muttersprachliche Audioaufnahmen zu dieser Einheit." }
+exam: { other: "Prüfung" }

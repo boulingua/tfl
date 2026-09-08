@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use or cite this material, please use the following metadata."
+title: "TFL — Türkisch als Fremdsprache (Stufe 0 bis B1)"
+abstract: >-
+  Ein offen lizenzierter Türkischkurs für den deutschen
+  Gesamtschulunterricht und für Selbstlernende, ausgerichtet am
+  Gemeinsamen Europäischen Referenzrahmen (GER / CEFR). Eine
+  vorgelagerte Stufe 0 (Alphabet, Laute, Vokalharmonie) geht den
+  Niveaus A1, A2 und B1 voraus; jede Einheit folgt dem
+  fünfschrittigen Modell und schließt mit einer Modellprüfung.
+type: dataset
+authors:
+  - family-names: "Le Boulanger"
+    given-names: "S."
+    email: "277736839+s-leboulanger@users.noreply.github.com"
+repository-code: "https://github.com/boulingua/tfl"
+url: "https://boulingua.github.io/tfl/"
+license:
+  - MIT
+  - CC-BY-SA-4.0
+keywords:
+  - "Türkisch"
+  - "Türkçe"
+  - "Turkish as a foreign language"
+  - "CEFR"
+  - "GER"
+  - "Vokalharmonie"
+  - "OER"
+  - "A1"
+  - "A2"
+  - "B1"
