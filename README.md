@@ -4,7 +4,9 @@ A Boulingua course by S. Le Boulanger for school teaching and independent study.
 The interface and task instructions are German; the target language is `tr`.
 
 **Development site:** the Hugo site and curriculum declaration are implemented.
-No teaching units, examinations or recordings are published in this repository.
+The repository now contains pronunciation drafts and a first A1 unit with a
+standalone assessment. These remain draft pages pending linguistic and
+pedagogical review; no recordings or completed level are claimed.
 The existing [roadmap](ROADMAP.md) defines the intended teaching sequence.
 
 ## Intended learning experience
@@ -51,3 +53,12 @@ Code: MIT, see [LICENSE](LICENSE). New course content: CC BY-SA 4.0 under the
 suite's content policy. Third-party material retains its own source and licence
 and must be documented separately. No copyrighted source is made freely
 redistributable merely by inclusion in this repository.
+
+## Review the first teaching tranche
+
+Run `hugo server --buildDrafts --disableFastRender` to include the teaching drafts.
+Review `/aussprache/` and `/a1/units/unit01-erste-begegnung/` under the site base
+path. The normal build excludes these drafts. Source references and task-specific
+proposed mappings are recorded in `docs/first-tranche-review-2026-10-31.json`.
+Native-language and pedagogical review, timing trials, materials and registration
+remain pending; these pages do not declare M2 or completed A1 conformance.

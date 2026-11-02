@@ -1,0 +1,140 @@
+{
+  "scope": "Pronunciation drafts and one A1 teaching unit with its assessment; no M2 or achieved coverage claim",
+  "sources": [
+    {
+      "url": "https://tdk.gov.tr/icerik/yazim-kurallari/ses-harf-ve-alfabe/",
+      "use": "29-letter alphabet and case forms"
+    },
+    {
+      "url": "https://tdk.gov.tr/icerik/yazim-kurallari/unlulerin-nitelikleri/",
+      "use": "Eight vowels and front/back/rounding groups"
+    },
+    {
+      "url": "https://yazim.tdk.gov.tr/",
+      "use": "Orthographic reference including proper-name suffix punctuation"
+    }
+  ],
+  "pages": [
+    {
+      "page": "a1/units/unit01-erste-begegnung",
+      "sha256": "4d6f9a7cc1703ff4669abb485479e119bd47a07b9fd6b3db87b006f73ce0d50c",
+      "review_status": "pending",
+      "reviewer": null,
+      "mappings": [
+        {
+          "id": "A1.REC.overall-reading-comprehension.01",
+          "statement": "You can make sense of very short, simple texts one phrase at a time, spotting familiar names, words and basic phrases and rereading as needed.",
+          "basis": "proposed",
+          "task_evidence": "Input/Practise1 locate named people and explicitly stated residence; exam1 extracts a new four-fact message.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.INT.conversation.03",
+          "statement": "You introduce someone and use basic phrases for greeting and taking your leave.",
+          "basis": "proposed",
+          "task_evidence": "Apply performs introductions and leave-taking in group and reception settings; exam3 observes role rotations.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.INT.information-exchange.05",
+          "statement": "I can tell people my name and ask other people theirs.",
+          "basis": "proposed",
+          "task_evidence": "Practise3 and Apply require name questions and responses; exam3 elicits each learner name.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.LING.orthographic-control.01",
+          "statement": "You copy familiar words and short phrases (signs, instructions, object names, shop names, set phrases), spell your address, nationality, and other personal details, and use basic punctuation like full stops and question marks.",
+          "basis": "proposed",
+          "task_evidence": "Practise2/4 preserve I/ı/İ/i and exact surname forms; exam2 checks copy accuracy.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.SOC.sociolinguistic-appropriateness.01",
+          "statement": "I can make basic social contact using the simplest everyday polite forms: greetings and goodbyes, introductions, and saying please, thank you, and sorry.",
+          "basis": "proposed",
+          "task_evidence": "Input contrasts familiar/polite routines; Practise5 and Apply use apology/repetition/thanks; exam3 observes them.",
+          "review_decision": null
+        }
+      ],
+      "source_revisions": [
+        {
+          "previous_sha256": "f5f5659903d57e97a964c97faaafce86406180af0c78171921954ac060b324d4",
+          "reason": "Added verified draft download metadata; teaching body unchanged."
+        }
+      ]
+    },
+    {
+      "page": "a1/units/unit01-erste-begegnung-exam",
+      "sha256": "8829c012464accc03d69b5a94847f2c8a9254a14631fd2824738a73763a93f89",
+      "review_status": "pending",
+      "reviewer": null,
+      "mappings": [
+        {
+          "id": "A1.REC.overall-reading-comprehension.01",
+          "statement": "You can make sense of very short, simple texts one phrase at a time, spotting familiar names, words and basic phrases and rereading as needed.",
+          "basis": "proposed",
+          "task_evidence": "Input/Practise1 locate named people and explicitly stated residence; exam1 extracts a new four-fact message.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.INT.conversation.03",
+          "statement": "You introduce someone and use basic phrases for greeting and taking your leave.",
+          "basis": "proposed",
+          "task_evidence": "Apply performs introductions and leave-taking in group and reception settings; exam3 observes role rotations.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.INT.information-exchange.05",
+          "statement": "I can tell people my name and ask other people theirs.",
+          "basis": "proposed",
+          "task_evidence": "Practise3 and Apply require name questions and responses; exam3 elicits each learner name.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.LING.orthographic-control.01",
+          "statement": "You copy familiar words and short phrases (signs, instructions, object names, shop names, set phrases), spell your address, nationality, and other personal details, and use basic punctuation like full stops and question marks.",
+          "basis": "proposed",
+          "task_evidence": "Practise2/4 preserve I/ı/İ/i and exact surname forms; exam2 checks copy accuracy.",
+          "review_decision": null
+        },
+        {
+          "id": "A1.SOC.sociolinguistic-appropriateness.01",
+          "statement": "I can make basic social contact using the simplest everyday polite forms: greetings and goodbyes, introductions, and saying please, thank you, and sorry.",
+          "basis": "proposed",
+          "task_evidence": "Input contrasts familiar/polite routines; Practise5 and Apply use apology/repetition/thanks; exam3 observes them.",
+          "review_decision": null
+        }
+      ]
+    }
+  ],
+  "native_review": null,
+  "pedagogical_review": null,
+  "audio_decision": "transcript-only draft; no recording approved",
+  "reference_pages": [
+    {
+      "page": "aussprache/acht-vokale",
+      "sha256": "5abdcaff0861e30b0e7fab80b4c854a2ae8958d4b1b6a2c006eaf8f2ad4f627a",
+      "review_status": "pending",
+      "reviewer": null,
+      "checks": [
+        "Check script and example spelling against cited primary references",
+        "Check pronunciation explanations and scoped exceptions",
+        "Exercise instructions with intended beginners",
+        "Review any future recording separately; no audio approval inferred"
+      ]
+    },
+    {
+      "page": "aussprache/i-und-i",
+      "sha256": "551b47df4eadd1cf3ff7783d02a08f32deeee927e87105ff1c091a55189e5b62",
+      "review_status": "pending",
+      "reviewer": null,
+      "checks": [
+        "Check script and example spelling against cited primary references",
+        "Check pronunciation explanations and scoped exceptions",
+        "Exercise instructions with intended beginners",
+        "Review any future recording separately; no audio approval inferred"
+      ]
+    }
+  ]
+}

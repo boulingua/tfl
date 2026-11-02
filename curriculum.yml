@@ -1,4 +1,6 @@
-# Target scope only; no descriptor implementation or educational approval is claimed.
+# First A1 teaching unit and assessment carry proposed descriptor mappings.
+# Task evidence and pronunciation drafts await review; achieved coverage and
+# educational approval are not claimed. See docs/first-tranche-review-2026-10-31.json.
 framework: boulingua-curriculum
 framework_version: 1.2.0
 language: tr
@@ -8,11 +10,32 @@ levels_claimed:
 - A1
 - A2
 - B1
-pages: {}
+pages:
+  A1: 2
 implements:
-  distinct_descriptors: 0
-  proposed: 0
+  distinct_descriptors: 5
+  proposed: 2
   asserted: 0
-realizations: []
+realizations:
+- implements_id: A1.REC.overall-reading-comprehension.01
+  page: a1/units/unit01-erste-begegnung
+- implements_id: A1.INT.conversation.03
+  page: a1/units/unit01-erste-begegnung
+- implements_id: A1.INT.information-exchange.05
+  page: a1/units/unit01-erste-begegnung
+- implements_id: A1.LING.orthographic-control.01
+  page: a1/units/unit01-erste-begegnung
+- implements_id: A1.SOC.sociolinguistic-appropriateness.01
+  page: a1/units/unit01-erste-begegnung
+- implements_id: A1.REC.overall-reading-comprehension.01
+  page: a1/units/unit01-erste-begegnung-exam
+- implements_id: A1.INT.conversation.03
+  page: a1/units/unit01-erste-begegnung-exam
+- implements_id: A1.INT.information-exchange.05
+  page: a1/units/unit01-erste-begegnung-exam
+- implements_id: A1.LING.orthographic-control.01
+  page: a1/units/unit01-erste-begegnung-exam
+- implements_id: A1.SOC.sociolinguistic-appropriateness.01
+  page: a1/units/unit01-erste-begegnung-exam
 gaps: []
 out_of_scope: []
