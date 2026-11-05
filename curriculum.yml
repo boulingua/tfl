@@ -2,7 +2,7 @@
 # Task evidence and pronunciation drafts await review; achieved coverage and
 # educational approval are not claimed. See docs/first-tranche-review-2026-10-31.json.
 framework: boulingua-curriculum
-framework_version: 1.2.0
+framework_version: 1.3.0
 language: tr
 declared_conformance: core
 conformance_status: in-progress
